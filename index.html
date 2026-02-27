@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tochukwu "TJ" Umunna</title>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --white: #ffffff;
+      --offwhite: #f8f8f6;
+      --black: #0a0a0a;
+      --gray: #6b6b6b;
+      --light-gray: #e8e8e8;
+      --border: #e0e0e0;
+      --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --mono: 'Courier New', Courier, monospace;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--white);
+      color: var(--black);
+      font-family: var(--font);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.2rem 3rem;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: var(--font);
+      font-weight: 800;
+      font-size: 1.1rem;
+      letter-spacing: -0.02em;
+      color: var(--black);
+      text-decoration: none;
+    }
+    .nav-center {
+      display: flex; gap: 2.5rem; list-style: none;
+      position: absolute; left: 50%; transform: translateX(-50%);
+    }
+    .nav-center a {
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--black);
+      transition: opacity 0.2s;
+    }
+    .nav-center a:hover { opacity: 0.5; }
+    .nav-resume {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      background: var(--black); color: var(--white);
+      padding: 0.6rem 1.2rem;
+      border-radius: 6px;
+      font-size: 0.85rem; font-weight: 600;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .nav-resume:hover { opacity: 0.8; }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center;
+      padding: 8rem 2rem 4rem;
+      background: var(--offwhite);
+    }
+    .hero-label {
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 1.2rem;
+      opacity: 0; animation: fadeUp 0.6s 0.1s forwards;
+    }
+    .hero-name {
+      font-size: clamp(3.5rem, 9vw, 7.5rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 0.95;
+      margin-bottom: 1.5rem;
+      opacity: 0; animation: fadeUp 0.6s 0.2s forwards;
+    }
+    .hero-sub {
+      font-size: 1.05rem;
+      color: var(--gray);
+      font-weight: 400;
+      max-width: 480px;
+      line-height: 1.6;
+      margin-bottom: 2.2rem;
+      opacity: 0; animation: fadeUp 0.6s 0.35s forwards;
+    }
+    .hero-icons {
+      display: flex; gap: 0.75rem; justify-content: center;
+      margin-bottom: 2.2rem;
+      opacity: 0; animation: fadeUp 0.6s 0.45s forwards;
+    }
+    .icon-btn {
+      width: 44px; height: 44px; border-radius: 50%;
+      border: 1.5px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      text-decoration: none; color: var(--black);
+      transition: background 0.2s, border-color 0.2s;
+      background: var(--white);
+    }
+    .icon-btn:hover { background: var(--black); color: var(--white); border-color: var(--black); }
+    .icon-btn svg { width: 18px; height: 18px; }
+    .hero-btns {
+      display: flex; gap: 0.9rem; justify-content: center;
+      opacity: 0; animation: fadeUp 0.6s 0.55s forwards;
+    }
+    .btn-solid {
+      display: inline-flex; align-items: center; gap: 0.45rem;
+      background: var(--black); color: var(--white);
+      padding: 0.85rem 1.8rem; border-radius: 8px;
+      font-size: 0.9rem; font-weight: 600;
+      text-decoration: none; transition: opacity 0.2s;
+    }
+    .btn-solid:hover { opacity: 0.8; }
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: 0.45rem;
+      background: transparent; color: var(--black);
+      padding: 0.85rem 1.8rem; border-radius: 8px;
+      border: 1.5px solid var(--border);
+      font-size: 0.9rem; font-weight: 600;
+      text-decoration: none; transition: border-color 0.2s, background 0.2s;
+    }
+    .btn-outline:hover { border-color: var(--black); background: var(--offwhite); }
+    .hero-chevron {
+      position: absolute; bottom: 2.5rem;
+      font-size: 1.4rem; color: var(--gray);
+      animation: bounce 2s infinite;
+      opacity: 0; animation: fadeUp 0.6s 1s forwards, bounce 2s 1.6s infinite;
+    }
+
+    /* ── SECTIONS ── */
+    .section {
+      padding: 6rem 0;
+      max-width: 900px; margin: 0 auto; padding-left: 2rem; padding-right: 2rem;
+    }
+    .section-tag {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 0.6rem;
+    }
+    .section-title {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 3rem;
+    }
+
+    /* ── ABOUT ── */
+    #about { background: var(--white); }
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
+      align-items: start;
+    }
+    .about-text {
+      font-size: 1rem; line-height: 1.75; color: var(--gray); font-weight: 400;
+    }
+    .about-text p + p { margin-top: 1rem; }
+    .about-facts { display: flex; flex-direction: column; gap: 1.5rem; }
+    .fact-card {
+      padding: 1.5rem;
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      background: var(--offwhite);
+    }
+    .fact-label {
+      font-family: var(--mono);
+      font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--gray); margin-bottom: 0.35rem;
+    }
+    .fact-value { font-weight: 700; font-size: 1rem; }
+
+    /* ── SKILLS ── */
+    #skills { background: var(--offwhite); }
+    .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
+    .skill-card {
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      padding: 1.5rem;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .skill-card:hover { border-color: var(--black); transform: translateY(-2px); }
+    .skill-card h3 {
+      font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--gray); font-weight: 600; margin-bottom: 1rem;
+      font-family: var(--mono);
+    }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .stag {
+      font-size: 0.8rem; font-weight: 500;
+      padding: 0.3rem 0.7rem;
+      background: var(--offwhite);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      color: var(--black);
+    }
+
+    /* ── PROJECTS ── */
+    #projects { background: var(--white); }
+    .projects-list { display: flex; flex-direction: column; gap: 1.5rem; }
+    .project-card {
+      border: 1.5px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem;
+      background: var(--white);
+      transition: border-color 0.2s, box-shadow 0.2s;
+      display: grid; grid-template-columns: 1fr 160px; gap: 2rem; align-items: start;
+    }
+    .project-card:hover { border-color: #bbb; box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
+    .project-title-row { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.5rem; }
+    .project-title { font-size: 1.15rem; font-weight: 800; letter-spacing: -0.02em; }
+    .project-title-icon {
+      width: 28px; height: 28px; border-radius: 50%;
+      background: var(--black); color: var(--white);
+      display: inline-flex; align-items: center; justify-content: center;
+      font-size: 0.75rem; flex-shrink: 0; text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .project-title-icon:hover { opacity: 0.7; }
+    .project-desc { font-size: 0.9rem; color: var(--gray); line-height: 1.6; margin-bottom: 1rem; }
+    .project-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.2rem; }
+    .ptag {
+      font-size: 0.75rem; font-weight: 500;
+      padding: 0.25rem 0.7rem;
+      background: var(--offwhite);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      color: var(--black);
+    }
+    .project-achievements { margin-top: 0.2rem; }
+    .project-achievements-label {
+      font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--black);
+      margin-bottom: 0.6rem; font-family: var(--mono);
+    }
+    .project-achievements ul { list-style: none; display: flex; flex-direction: column; gap: 0.35rem; }
+    .project-achievements li {
+      font-size: 0.88rem; color: var(--gray); line-height: 1.5;
+      padding-left: 1.1rem; position: relative;
+    }
+    .project-achievements li::before {
+      content: '•'; position: absolute; left: 0; color: var(--black); font-size: 0.9rem;
+    }
+    .project-btns { display: flex; flex-direction: column; gap: 0.6rem; }
+    .pbtn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 0.45rem;
+      padding: 0.6rem 1rem; border-radius: 8px;
+      font-size: 0.82rem; font-weight: 600; text-decoration: none;
+      transition: opacity 0.2s, background 0.2s;
+      white-space: nowrap;
+    }
+    .pbtn-outline {
+      border: 1.5px solid var(--border); color: var(--black); background: var(--white);
+    }
+    .pbtn-outline:hover { border-color: var(--black); }
+    .pbtn-solid {
+      background: var(--black); color: var(--white); border: 1.5px solid var(--black);
+    }
+    .pbtn-solid:hover { opacity: 0.8; }
+
+    /* ── CONTACT ── */
+    #contact { background: var(--offwhite); }
+    .contact-wrapper {
+      text-align: center; max-width: 600px; margin: 0 auto;
+    }
+    .contact-wrapper p { color: var(--gray); font-size: 1rem; line-height: 1.7; margin-bottom: 2.5rem; }
+    .contact-links {
+      display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
+      margin-bottom: 3rem;
+    }
+    .contact-item {
+      display: flex; flex-direction: column; align-items: center;
+      padding: 1.2rem 2rem;
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      background: var(--white);
+      text-decoration: none; color: var(--black);
+      transition: border-color 0.2s, transform 0.2s;
+      min-width: 140px;
+    }
+    .contact-item:hover { border-color: var(--black); transform: translateY(-2px); }
+    .contact-item .ci-label {
+      font-family: var(--mono);
+      font-size: 0.65rem; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--gray); margin-bottom: 0.3rem;
+    }
+    .contact-item .ci-val { font-size: 0.88rem; font-weight: 600; }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.8rem 3rem;
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 0.8rem; color: var(--gray);
+    }
+
+    /* ── REVEAL ── */
+    .reveal { opacity: 1; transform: none; transition: opacity 0.55s ease, transform 0.55s ease; }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(6px); }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-center { display: none; }
+      .hero-name { font-size: clamp(2.8rem, 12vw, 5rem); }
+      .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .skills-grid { grid-template-columns: 1fr 1fr; }
+      .project-card { grid-template-columns: 1fr; }
+      footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#hero">TJU.</a>
+  <ul class="nav-center">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a class="nav-resume" href="Tochukwu_Umunna_Resume_.pdf" download>
+    <svg viewBox="0 0 16 16" width="14" fill="currentColor"><path d="M8 12L3 7h3V1h4v6h3L8 12z"/><path d="M2 14h12v-2H2v2z"/></svg>
+    Resume
+  </a>
+</nav>
+
+<!-- HERO -->
+<section id="hero" style="position:relative;">
+  <p class="hero-label">Finance · Fintech · Data Analytics</p>
+  <h1 class="hero-name">Tochukwu<br>"TJ" Umunna</h1>
+  <p class="hero-sub">Finance student at UT Dallas building at the intersection of capital markets, quantitative analysis, and emerging technology.</p>
+
+  <div class="hero-icons">
+    <!-- LinkedIn -->
+    <a class="icon-btn" href="https://www.linkedin.com/in/tj-umunna-8046a9292/" target="_blank" title="LinkedIn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>
+      </svg>
+    </a>
+    <!-- GitHub -->
+    <a class="icon-btn" href="https://github.com/TJ7365/Tj7365" target="_blank" title="GitHub">
+      <svg viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.868-.013-1.703-2.782.605-3.369-1.342-3.369-1.342-.454-1.154-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.004.07 1.532 1.032 1.532 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0 1 12 6.836a9.59 9.59 0 0 1 2.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/>
+      </svg>
+    </a>
+    <!-- Email -->
+    <a class="icon-btn" href="mailto:umunnatj@gmail.com" title="Email">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
+      </svg>
+    </a>
+    <!-- Portfolio link -->
+    <a class="icon-btn" href="#projects" title="Projects">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
+      </svg>
+    </a>
+  </div>
+
+  <div class="hero-btns">
+    <a class="btn-solid" href="#projects">View Projects ↗</a>
+    <a class="btn-outline" href="Tochukwu_Umunna_Resume_.pdf" download>
+      <svg viewBox="0 0 16 16" width="14" fill="currentColor"><path d="M8 12L3 7h3V1h4v6h3L8 12z"/><path d="M2 14h12v-2H2v2z"/></svg>
+      Download Resume
+    </a>
+  </div>
+
+  <div class="hero-chevron">∨</div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section">
+    <p class="section-tag reveal">About</p>
+    <h2 class="section-title reveal">A bit about me.</h2>
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <p>I'm a Finance junior at the University of Texas at Dallas (Naveen Jindal School of Management), graduating December 2026. My work sits at the intersection of financial modeling, data analytics, and emerging technology.</p>
+        <p>From backtesting trading strategies in Python to applying Monte Carlo simulation and Black-Scholes pricing in quantitative research, I focus on using technology to drive smarter financial decisions.</p>
+        <p>Currently an extern at Beats by Dre, applying AI-orchestrated workflows to consumer insights and purchase behavior analysis.</p>
+      </div>
+      <div class="about-facts reveal">
+        <div class="fact-card">
+          <div class="fact-label">University</div>
+          <div class="fact-value">UT Dallas · Naveen Jindal School of Management</div>
+        </div>
+        <div class="fact-card">
+          <div class="fact-label">Degree</div>
+          <div class="fact-value">Bachelor of Finance · Dec 2026</div>
+        </div>
+        <div class="fact-card">
+          <div class="fact-label">Currently</div>
+          <div class="fact-value">Extern @ Beats by Dre — Data Analytics & Consumer Insights</div>
+        </div>
+        <div class="fact-card">
+          <div class="fact-label">Location</div>
+          <div class="fact-value">Richardson, TX</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" style="background:var(--offwhite);">
+  <div class="section">
+    <p class="section-tag reveal">Capabilities</p>
+    <h2 class="section-title reveal">Skills & Tools.</h2>
+    <div class="skills-grid">
+      <div class="skill-card reveal">
+        <h3>Finance</h3>
+        <div class="skill-tags">
+          <span class="stag">Financial Modeling</span>
+          <span class="stag">DCF & Valuation</span>
+          <span class="stag">Risk Management</span>
+          <span class="stag">NPV / IRR</span>
+          <span class="stag">Derivatives Pricing</span>
+        </div>
+      </div>
+      <div class="skill-card reveal">
+        <h3>Technology</h3>
+        <div class="skill-tags">
+          <span class="stag">Python</span>
+          <span class="stag">SQL</span>
+          <span class="stag">Database Design</span>
+          <span class="stag">Statistical Modelling</span>
+          <span class="stag">AI Workflows</span>
+        </div>
+      </div>
+      <div class="skill-card reveal">
+        <h3>Tools</h3>
+        <div class="skill-tags">
+          <span class="stag">Excel / VBA</span>
+          <span class="stag">PowerPoint</span>
+          <span class="stag">Bloomberg</span>
+          <span class="stag">Canva</span>
+          <span class="stag">CAD Software</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" style="background:var(--white);">
+  <div class="section">
+    <p class="section-tag reveal">Work</p>
+    <h2 class="section-title reveal">Selected Projects.</h2>
+    <div class="projects-list">
+
+      <!-- 01 -->
+      <div class="project-card reveal">
+        <div>
+          <div class="project-title-row">
+            <h3 class="project-title">SMA Crossover Backtesting Engine</h3>
+            <a class="project-title-icon" href="https://github.com/TJ7365/sma-crossover-backtester" target="_blank">↗</a>
+          </div>
+          <p class="project-desc">Python-based backtesting engine for a 20/50-day SMA crossover strategy on SPY and QQQ. Generates trading signals, simulates performance vs. Buy & Hold, and exports risk-adjusted results to Excel.</p>
+          <div class="project-tags">
+            <span class="ptag">Python</span><span class="ptag">Pandas</span><span class="ptag">Backtesting</span><span class="ptag">Excel</span>
+          </div>
+          <div class="project-achievements">
+            <div class="project-achievements-label">Key Achievements</div>
+            <ul>
+              <li>Built a full signal engine generating buy/sell signals from 20/50-day SMA crossovers on live equity data</li>
+              <li>Benchmarked strategy returns against Buy & Hold with Sharpe ratio and max drawdown metrics</li>
+              <li>Automated results export to formatted Excel reports for review and presentation</li>
+            </ul>
+          </div>
+        </div>
+        <div class="project-btns">
+          <a class="pbtn pbtn-outline" href="https://github.com/TJ7365/sma-crossover-backtester" target="_blank">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.868-.013-1.703-2.782.605-3.369-1.342-3.369-1.342-.454-1.154-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.004.07 1.532 1.032 1.532 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0 1 12 6.836a9.59 9.59 0 0 1 2.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+            GitHub
+          </a>
+        </div>
+      </div>
+
+      <!-- 02 -->
+      <div class="project-card reveal">
+        <div>
+          <div class="project-title-row">
+            <h3 class="project-title">Citi Quantitative Analysis Simulation</h3>
+          </div>
+          <p class="project-desc">Applied cost of carry, Black-Scholes, Monte Carlo simulation, and Value at Risk to price coffee futures and derivatives, develop hedging strategies, and structure commodity-linked securities.</p>
+          <div class="project-tags">
+            <span class="ptag">Black-Scholes</span><span class="ptag">Monte Carlo</span><span class="ptag">VaR</span><span class="ptag">Derivatives</span><span class="ptag">Hedging</span>
+          </div>
+          <div class="project-achievements">
+            <div class="project-achievements-label">Key Achievements</div>
+            <ul>
+              <li>Priced coffee futures and options using Black-Scholes and cost of carry models</li>
+              <li>Developed commodity-linked hedging strategies within a structured market risk framework</li>
+              <li>Applied Monte Carlo simulation and VaR to quantify and communicate portfolio risk</li>
+            </ul>
+          </div>
+        </div>
+        <div class="project-btns">
+          <a class="pbtn pbtn-outline" href="https://github.com/TJ7365/Tj7365" target="_blank">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.868-.013-1.703-2.782.605-3.369-1.342-3.369-1.342-.454-1.154-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.004.07 1.532 1.032 1.532 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0 1 12 6.836a9.59 9.59 0 0 1 2.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+            GitHub
+          </a>
+        </div>
+      </div>
+
+      <!-- 03 -->
+      <div class="project-card reveal">
+        <div>
+          <div class="project-title-row">
+            <h3 class="project-title">Real Estate Financial Analysis</h3>
+          </div>
+          <p class="project-desc">Analyzed financial statements for a Lagos-based real estate firm using advanced Excel modeling to assess profitability, liquidity, and solvency and support investment strategy development.</p>
+          <div class="project-tags">
+            <span class="ptag">Excel</span><span class="ptag">NPV/IRR</span><span class="ptag">Financial Modeling</span><span class="ptag">Regression Analysis</span>
+          </div>
+          <div class="project-achievements">
+            <div class="project-achievements-label">Key Achievements</div>
+            <ul>
+              <li>Identified a 12% improvement in net profit margin through financial statement analysis</li>
+              <li>Built NPV/IRR models using VLOOKUP and PivotTables to assess property investment viability</li>
+              <li>Delivered investment reports with actionable recommendations to improve client outcomes</li>
+            </ul>
+          </div>
+        </div>
+        <div class="project-btns">
+          <a class="pbtn pbtn-outline" href="https://github.com/TJ7365/Tj7365" target="_blank">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.868-.013-1.703-2.782.605-3.369-1.342-3.369-1.342-.454-1.154-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.004.07 1.532 1.032 1.532 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0 1 12 6.836a9.59 9.59 0 0 1 2.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+            GitHub
+          </a>
+        </div>
+      </div>
+
+      <!-- 04 -->
+      <div class="project-card reveal">
+        <div>
+          <div class="project-title-row">
+            <h3 class="project-title">Consumer Insights — Beats by Dre</h3>
+          </div>
+          <p class="project-desc">Applied an AI-orchestrated workflow (Perplexity + Claude) to extract, rank, and visualize consumer pain points from unstructured feedback data for Beats by Dre.</p>
+          <div class="project-tags">
+            <span class="ptag">AI Workflows</span><span class="ptag">Data Analytics</span><span class="ptag">Consumer Research</span><span class="ptag">Perplexity</span>
+          </div>
+          <div class="project-achievements">
+            <div class="project-achievements-label">Key Achievements</div>
+            <ul>
+              <li>Improved speed of insight generation using AI-orchestrated workflow automation</li>
+              <li>Translated unstructured customer feedback into structured, presentation-ready business insights</li>
+              <li>Tied consumer pain points directly to purchase behavior patterns for strategic recommendations</li>
+            </ul>
+          </div>
+        </div>
+        <div class="project-btns">
+          <a class="pbtn pbtn-outline" href="https://github.com/TJ7365/Tj7365" target="_blank">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.868-.013-1.703-2.782.605-3.369-1.342-3.369-1.342-.454-1.154-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.004.07 1.532 1.032 1.532 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0 1 12 6.836a9.59 9.59 0 0 1 2.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+            GitHub
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" style="background:var(--offwhite);">
+  <div class="section">
+    <div class="contact-wrapper">
+      <p class="section-tag reveal" style="text-align:center;">Contact</p>
+      <h2 class="section-title reveal" style="text-align:center;">Let's connect.</h2>
+      <p class="reveal">Open to internships, full-time roles, and conversations about finance, fintech, and data analytics. Don't hesitate to reach out.</p>
+      <div class="contact-links reveal">
+        <a class="contact-item" href="/cdn-cgi/l/email-protection#e2978f978c8c839688a2858f838b8ecc818d8f">
+          <span class="ci-label">Email</span>
+          <span class="ci-val"><span class="__cf_email__" data-cfemail="2e5b435b40404f5a446e49434f4742004d4143">[email&#160;protected]</span></span>
+        </a>
+        <a class="contact-item" href="https://github.com/TJ7365/Tj7365" target="_blank">
+          <span class="ci-label">GitHub</span>
+          <span class="ci-val">TJ7365</span>
+        </a>
+        <a class="contact-item" href="https://www.linkedin.com/in/tj-umunna-8046a9292/" target="_blank">
+          <span class="ci-label">LinkedIn</span>
+          <span class="ci-val">tj-umunna</span>
+        </a>
+        <a class="contact-item" href="tel:6822255414">
+          <span class="ci-label">Phone</span>
+          <span class="ci-val">(682) 225-5414</span>
+        </a>
+      </div>
+      <div class="reveal">
+        <a class="btn-solid" href="Tochukwu_Umunna_Resume_.pdf" download style="display:inline-flex;">
+          <svg viewBox="0 0 16 16" width="14" fill="currentColor"><path d="M8 12L3 7h3V1h4v6h3L8 12z"/><path d="M2 14h12v-2H2v2z"/></svg>
+          Download Resume
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span>© 2026 Tochukwu "TJ" Umunna</span>
+  <span>Finance · Fintech · UT Dallas</span>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entri
