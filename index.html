@@ -64,6 +64,7 @@
       border-radius: 6px;
       font-size: 0.85rem; font-weight: 600;
       text-decoration: none;
+      text-transform: uppercase;
       transition: opacity 0.2s;
     }
     .nav-resume:hover { opacity: 0.8; }
@@ -371,21 +372,15 @@
       </svg>
     </a>
     <!-- GitHub -->
-    <a class="icon-btn" href="https://github.com/TJ7365/Tj7365" target="_blank" title="GitHub">
+    <a class="icon-btn" href="https://github.com/repos?q=owner%3A%40me" target="_blank" title="GitHub">
       <svg viewBox="0 0 24 24" fill="currentColor">
         <path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.868-.013-1.703-2.782.605-3.369-1.342-3.369-1.342-.454-1.154-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.004.07 1.532 1.032 1.532 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0 1 12 6.836a9.59 9.59 0 0 1 2.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/>
       </svg>
     </a>
     <!-- Email -->
-    <a class="icon-btn" href="/cdn-cgi/l/email-protection#394c544c5757584d53795e54585055175a5654" title="Email">
+    <a class="icon-btn" href="mailto:umunnatj@gmail.com" title="Email">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
-      </svg>
-    </a>
-    <!-- Portfolio link -->
-    <a class="icon-btn" href="#projects" title="Projects">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
       </svg>
     </a>
   </div>
@@ -513,6 +508,34 @@
       <div class="project-card reveal">
         <div>
           <div class="project-title-row">
+            <h3 class="project-title">VolEdge – Options Pricing & Risk Dashboard</h3>
+            <a class="project-title-icon" href="https://github.com/TJ7365/OptionSight" target="_blank">↗</a>
+          </div>
+          <p class="project-desc">An interactive quantitative dashboard that calculates the fair value of options contracts (the right to buy or sell a stock at a set price) and measures risk exposure in real time — combining three industry-standard models used by professional traders and risk analysts at top financial institutions.</p>
+          <div class="project-tags">
+            <span class="ptag">Python</span><span class="ptag">Black-Scholes</span><span class="ptag">GARCH</span><span class="ptag">Monte Carlo</span><span class="ptag">Options Pricing</span><span class="ptag">Risk Analytics</span>
+          </div>
+          <div class="project-achievements">
+            <div class="project-achievements-label">Key Achievements</div>
+            <ul>
+              <li>Implemented Black-Scholes pricing model to calculate theoretically fair option prices and Greeks (Delta, Gamma, Vega, Theta) — the sensitivity metrics traders use to manage directional and volatility risk</li>
+              <li>Integrated GARCH(1,1) volatility forecasting to dynamically estimate how much a stock's price is expected to swing going forward, producing a more accurate risk input than static historical averages</li>
+              <li>Built a Monte Carlo simulation engine running thousands of randomized price-path scenarios to stress-test option value under different market conditions — mirroring risk frameworks used in institutional derivatives desks</li>
+            </ul>
+          </div>
+        </div>
+        <div class="project-btns">
+          <a class="pbtn pbtn-outline" href="https://github.com/TJ7365/OptionSight" target="_blank">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.868-.013-1.703-2.782.605-3.369-1.342-3.369-1.342-.454-1.154-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.004.07 1.532 1.032 1.532 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0 1 12 6.836a9.59 9.59 0 0 1 2.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+            GitHub
+          </a>
+        </div>
+      </div>
+
+      <!-- 03 -->
+      <div class="project-card reveal">
+        <div>
+          <div class="project-title-row">
             <h3 class="project-title">SMA Crossover Backtesting Engine</h3>
             <a class="project-title-icon" href="https://github.com/TJ7365/sma-crossover-backtester" target="_blank">↗</a>
           </div>
@@ -549,9 +572,9 @@
       <h2 class="section-title reveal" style="text-align:center;">Let's connect.</h2>
       <p class="reveal">Open to internships, full-time roles, and conversations about finance, fintech, and data analytics. Don't hesitate to reach out.</p>
       <div class="contact-links reveal">
-        <a class="contact-item" href="/cdn-cgi/l/email-protection#e2978f978c8c839688a2858f838b8ecc818d8f">
+        <a class="contact-item" href="mailto:umunnatj@gmail.com">
           <span class="ci-label">Email</span>
-          <span class="ci-val"><span class="__cf_email__" data-cfemail="2e5b435b40404f5a446e49434f4742004d4143">[email&#160;protected]</span></span>
+          <span class="ci-val">umunnatj@gmail.com</span>
         </a>
         <a class="contact-item" href="https://github.com/TJ7365/Tj7365" target="_blank">
           <span class="ci-label">GitHub</span>
@@ -574,12 +597,4 @@
       </div>
     </div>
   </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <span>© 2026 Tochukwu "TJ" Umunna</span>
-  <span>Finance · Fintech · UT Dallas</span>
-</footer>
-
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudfla
+</sect
