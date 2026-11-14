@@ -249,6 +249,19 @@
       border-radius: 100px;
       color: var(--black);
     }
+    .project-shot {
+      grid-column: 1 / -1; display: block; position: relative;
+      border: 1px solid var(--border); border-radius: 8px; overflow: hidden;
+      background: var(--offwhite); margin-bottom: -0.5rem;
+    }
+    .project-shot img { width: 100%; height: auto; display: block; transition: transform 0.3s; }
+    .project-shot:hover img { transform: scale(1.01); }
+    .project-shot-label {
+      position: absolute; bottom: 0.6rem; right: 0.6rem;
+      font-family: var(--mono); font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--white); background: var(--black);
+      padding: 0.3rem 0.6rem; border-radius: 4px;
+    }
     .project-achievements { margin-top: 0.2rem; }
     .project-achievements-label {
       font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em;
@@ -338,6 +351,11 @@
       .skills-grid { grid-template-columns: 1fr 1fr; }
       .project-card { grid-template-columns: 1fr; }
       footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+    }
+    @media (max-width: 480px) {
+      .skills-grid { grid-template-columns: 1fr; }
+      .hero-btns a { white-space: nowrap; padding-left: 1.1rem; padding-right: 1.1rem; }
+      .project-card { padding: 1.4rem; }
     }
   </style>
 </head>
@@ -484,6 +502,7 @@
 
       <!-- FP&A -->
       <div class="project-card reveal">
+        <a class="project-shot" href="https://github.com/TJ7365/fpa-variance-forecast#tableau-dashboard" target="_blank"><img src="assets/fpa-dashboard.jpg" alt="Tableau dashboard for the FP&amp;A budget vs actual project: KPIs, monthly revenue, gross profit bridge, variance by product line and department, scenario EBITDA" loading="lazy" width="1400"><span class="project-shot-label">Tableau dashboard</span></a>
         <div>
           <div class="project-title-row">
             <h3 class="project-title">FP&amp;A Budget vs Actual &amp; 9+3 Reforecast</h3>
@@ -491,7 +510,7 @@
           </div>
           <p class="project-desc">A month-end FP&amp;A package for a fictional DFW HVAC distributor: budget vs actual by product line and department, a gross profit bridge, a Q4 reforecast with base, upside, and downside scenarios, and a variance commentary memo with recommended actions.</p>
           <div class="project-tags">
-            <span class="ptag">Python</span><span class="ptag">Excel</span><span class="ptag">pandas</span><span class="ptag">Forecasting</span><span class="ptag">Variance Analysis</span>
+            <span class="ptag">Python</span><span class="ptag">Excel</span><span class="ptag">pandas</span><span class="ptag">Forecasting</span><span class="ptag">Variance Analysis</span><span class="ptag">Tableau</span>
           </div>
           <div class="project-achievements">
             <div class="project-achievements-label">Key Achievements</div>
@@ -512,6 +531,7 @@
 
       <!-- TI -->
       <div class="project-card reveal">
+        <a class="project-shot" href="https://github.com/TJ7365/ti-three-statement-dcf#tableau-dashboard" target="_blank"><img src="assets/dcf-dashboard.jpg" alt="Tableau dashboard for the Texas Instruments DCF: valuation KPIs, revenue, capex and free cash flow, margins, WACC and growth sensitivity" loading="lazy" width="1400"><span class="project-shot-label">Tableau dashboard</span></a>
         <div>
           <div class="project-title-row">
             <h3 class="project-title">Texas Instruments: Three-Statement Model &amp; DCF</h3>
@@ -519,7 +539,7 @@
           </div>
           <p class="project-desc">An integrated income statement, balance sheet, and cash flow model for Texas Instruments built from real 10-K data pulled from the SEC EDGAR API, with a five-year forecast anchored to 2026 actuals and a DCF valuation.</p>
           <div class="project-tags">
-            <span class="ptag">Python</span><span class="ptag">Excel</span><span class="ptag">SEC EDGAR API</span><span class="ptag">3-Statement Model</span><span class="ptag">DCF</span>
+            <span class="ptag">Python</span><span class="ptag">Excel</span><span class="ptag">SEC EDGAR API</span><span class="ptag">3-Statement Model</span><span class="ptag">DCF</span><span class="ptag">Tableau</span>
           </div>
           <div class="project-achievements">
             <div class="project-achievements-label">Key Achievements</div>
@@ -540,6 +560,7 @@
 
       <!-- Close -->
       <div class="project-card reveal">
+        <a class="project-shot" href="https://github.com/TJ7365/month-end-close-automation#tableau-dashboard" target="_blank"><img src="assets/close-dashboard.jpg" alt="Tableau dashboard for the month-end close: close status KPIs, exceptions by type, P&amp;L flux, exception log, revenue and expense trend" loading="lazy" width="1400"><span class="project-shot-label">Tableau dashboard</span></a>
         <div>
           <div class="project-title-row">
             <h3 class="project-title">Month-End Close Automation</h3>
@@ -547,7 +568,7 @@
           </div>
           <p class="project-desc">A SQL and Python pipeline that runs the control checks a finance team does by hand at month-end, reconciles cash to the bank statement, and writes an Excel close pack with every exception, its severity, and the fix.</p>
           <div class="project-tags">
-            <span class="ptag">SQL</span><span class="ptag">SQLite</span><span class="ptag">Python</span><span class="ptag">Bank Reconciliation</span><span class="ptag">Internal Controls</span>
+            <span class="ptag">SQL</span><span class="ptag">SQLite</span><span class="ptag">Python</span><span class="ptag">Bank Reconciliation</span><span class="ptag">Internal Controls</span><span class="ptag">Tableau</span>
           </div>
           <div class="project-achievements">
             <div class="project-achievements-label">Key Achievements</div>
